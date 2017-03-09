@@ -22,7 +22,8 @@ install:
 
 build_script:
 
-  - ps: $env:PYTHON\python .\SashaAppVeyorEncoding.py
+  - ps: Write-host $env:PYTHON
+  - ps: $env:PYTHON\python.exe .\SashaAppVeyorEncoding.py
   - cmd: "%PYTHON%\\python SashaAppVeyorEncoding.py"
   
 on_finish:
