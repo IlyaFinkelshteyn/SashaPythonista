@@ -12,7 +12,7 @@ platform: x64
 install:
  # - cmd: "%PIP% install --disable-pip-version-check --user --upgrade pip"
  # - cmd: "%PIP% install win-unicode-console"
- # - cmd: "chcp 65001"
+  - cmd: "chcp 65001"
 
 build_script:
 
