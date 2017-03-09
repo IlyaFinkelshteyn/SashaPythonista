@@ -12,7 +12,9 @@ platform: x64
 install:
   - cmd: mkdir %USERPROFILE%\Documents\WindowsPowerShell\Modules\SetConsoleFont
   - cmd: copy SetConsoleFont.psm1 %USERPROFILE%\Documents\WindowsPowerShell\Modules\SetConsoleFont
+  - cmd: cd %USERPROFILE%\Documents\WindowsPowerShell\Modules\SetConsoleFont
   - ps: Import-Module SetConsoleFont
+  - cmd: cd %APPVEYOR_BUILD_FOLDER%
   
   - cmd: "%PIP% install --disable-pip-version-check --user --upgrade pip"
   - cmd: "%PIP% install win-unicode-console"
@@ -20,7 +22,7 @@ install:
 
 build_script:
 
-  - ps: $env:PYTHON\\python SashaAppVeyorEncoding.py
+  - ps: $env:PYTHON\python .\SashaAppVeyorEncoding.py
   - cmd: "%PYTHON%\\python SashaAppVeyorEncoding.py"
   
 on_finish:
