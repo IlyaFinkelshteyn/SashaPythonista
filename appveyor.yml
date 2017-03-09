@@ -10,14 +10,16 @@ environment:
 platform: x64
 
 install:
-
+  - cmd: mkdir %USERPROFILE%\Documents\WindowsPowerShell\Modules\SetConsoleFont\
+  - cmd: copy SetConsoleFont.psm1 %USERPROFILE%\Documents\WindowsPowerShell\Modules\SetConsoleFont\
   - cmd: "%PIP% install --disable-pip-version-check --user --upgrade pip"
   - cmd: "%PIP% install win-unicode-console"
   - cmd: "chcp 65001"
 
 build_script:
 
+  - ps: $env:PYTHON\\python SashaAppVeyorEncoding.py
   - cmd: "%PYTHON%\\python SashaAppVeyorEncoding.py"
-
+  
 on_finish:
   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
